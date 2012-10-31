@@ -26,11 +26,16 @@ $(document).ready(function(){
 		
 	};
 	
-	$(".deleteButton").on("click", function(){
-		alert("whut");
-		//$(this).parent().remove();
-			//companiesFollowed[$(this.parent.attr('id')).remove()];
+	$('.deleteButton').live('click', function () {
+		$(this).parent().remove();
+		//removeSymbol($(this).parent.attr('id'));
+		//companiesFollowed[$(this.parent.attr('id')).remove()];
 	});
+	function removeSymbol(symbol){
+		companiesFollowed = jQuery.grep(companiesFollowed, function(value) {
+			return value != symbol;
+		});
+	}
 	
 	function addStockItem(companySymbol, data){
 		var stockItem = '<div class="stockItem" id="' + companySymbol + '">';
